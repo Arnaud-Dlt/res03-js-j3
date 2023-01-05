@@ -161,6 +161,8 @@ let users = [
     }
 ];
 
+///////////////   ETAPE 1    ///////////////////
+
 function activeUsers(users) 
 {
     let nbActiveUsers=0;
@@ -169,7 +171,7 @@ function activeUsers(users)
     {
         if(user.isActive === true)
         {
-            nbActiveUsers+=user.isActive;
+            nbActiveUsers+=1;
         }
     }
     return nbActiveUsers;
@@ -178,19 +180,64 @@ function activeUsers(users)
 console.log(`Il y a ${activeUsers(users)} utilisateurs actifs.`);
 
 
+///////////////   ETAPE 2    ///////////////////
+
 function activeUserBlueEyes(users)
 {
-    let blueEyes=0;
+    let activeBlueEyes=0;
     
     for( user of users)
     {
         if(user.isActive === true && user.eyeColor === "blue")
         {
-            blueEyes+=user.eyeColor;
+            activeBlueEyes+=1;
         }
     }
-    
-    return blueEyes;
+    return activeBlueEyes;
 }
 
 console.log(`Sur les ${activeUsers(users)} utilisateurs actifs, ${activeUserBlueEyes(users)} ont les yeux bleu`)
+
+
+
+///////////////   ETAPE 3    ///////////////////
+
+function getActiveUsersAge(users)
+{
+    let ages=0;
+    
+    for(user of users)
+    {
+        if(user.isActive===true)
+        {
+            ages= ages + user.age;
+        }
+    }
+    return ages;
+}
+
+console.log(getActiveUsersAge(users));
+
+
+function averageAgeActiveUsers(users)
+{
+    let average=getActiveUsersAge(users)/activeUsers(users);
+    return average;
+}
+console.log(`La moyenne d'âge des utilisateur actifs est de ${averageAgeActiveUsers(users)} ans`)
+
+
+
+///////////////   ETAPE 4    ///////////////////
+
+
+function getMultronUsers(users) {
+
+}
+
+function setMultronToCenturia(users) {
+
+}
+
+console.log(`${setMultronToCenturia(users)} user companies have been changed from MULTRON to CENTURIA.`);
+
