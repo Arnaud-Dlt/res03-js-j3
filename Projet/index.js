@@ -372,3 +372,4 @@ function greenEyesInactive(users)
 console.log(`Out of our brown eyed users ${brownEyesActive(users)} are active and ${brownEyesInactive(users)} are inactive`);
 console.log(`Out of our blue eyed users ${blueEyesActive(users)} are active and ${blueEyesInactive(users)} are inactive`);
 console.log(`Out of our green eyed users ${greenEyesActive(users)} are active and ${greenEyesInactive(users)} are inactive`);
+
