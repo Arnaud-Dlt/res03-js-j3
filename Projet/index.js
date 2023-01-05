@@ -178,18 +178,19 @@ function activeUsers(users)
 console.log(`Il y a ${activeUsers(users)} utilisateurs actifs.`);
 
 
-function activeUserBlueEyes()
+function activeUserBlueEyes(users)
 {
     let blueEyes=0;
     
     for( user of users)
     {
-        if(user.eyeColor === "blue")
+        if(user.isActive === true && user.eyeColor === "blue")
         {
             blueEyes+=user.eyeColor;
         }
     }
     
-    return activeUsers();
-    
+    return blueEyes;
 }
+
+console.log(`Sur les ${activeUsers(users)} utilisateurs actifs, ${activeUserBlueEyes(users)} ont les yeux bleu`)
