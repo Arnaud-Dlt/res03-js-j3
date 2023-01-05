@@ -167,13 +167,14 @@ function activeUsers(users)
 {
     let nbActiveUsers=0;
     
-    for(user of users)
-    {
-        if(user.isActive === true)
-        {
-            nbActiveUsers+=1;
+    for(user of users){
+        
+        if(user.isActive === true){
+            
+            nbActiveUsers++;
         }
     }
+    
     return nbActiveUsers;
 }
 
@@ -182,47 +183,58 @@ console.log(`Il y a ${activeUsers(users)} utilisateurs actifs.`);
 
 ///////////////   ETAPE 2    ///////////////////
 
-function activeUserBlueEyes(users)
-{
-    let activeBlueEyes=0;
+function getActiveUsers(users) {
     
-    for( user of users)
-    {
-        if(user.isActive === true && user.eyeColor === "blue")
-        {
-            activeBlueEyes+=1;
+    let activeUsers = [];
+    
+    for(user of users){
+        
+        if(user.isActive === true){
+            
+            activeUsers.push(user);
         }
     }
-    return activeBlueEyes;
+    
+    return activeUsers;
 }
 
-console.log(`Sur les ${activeUsers(users)} utilisateurs actifs, ${activeUserBlueEyes(users)} ont les yeux bleu`)
+function hasBlueEyes(users) {
+    
+    let blueEyes = 0;
+    
+    for(user of users){
+        
+        if(user.isActive === true && user.eyeColor === "blue"){
+            
+            blueEyes ++
+        }
+    }
+    
+    return blueEyes;
+
+}
+
+console.log(`Sur les ${activeUsers(users)} utilisateurs actifs, ${hasBlueEyes(users)} ont les yeux bleu`)
 
 
 
 ///////////////   ETAPE 3    ///////////////////
 
-function getActiveUsersAge(users)
-{
-    let ages=0;
-    
-    for(user of users)
-    {
-        if(user.isActive===true)
-        {
-            ages= ages + user.age;
-        }
-    }
-    return ages;
-}
-
-console.log(getActiveUsersAge(users));
 
 
 function averageAgeActiveUsers(users)
 {
-    let average=getActiveUsersAge(users)/activeUsers(users);
-    return average;
+    activeUsers=getActiveUsers(users);
+    
+    let activeUsersAverageAge=0;
+    
+    for(activeUser of activeUsers)
+    
+    {
+        activeUsersAverageAge+=activeUser.age;
+    }
+    return activeUsersAverageAge/activeUsers.length;
+    
 }
 console.log(`La moyenne d'âge des utilisateur actifs est de ${averageAgeActiveUsers(users)} ans`)
 
@@ -231,13 +243,132 @@ console.log(`La moyenne d'âge des utilisateur actifs est de ${averageAgeActiveU
 ///////////////   ETAPE 4    ///////////////////
 
 
-function getMultronUsers(users) {
-
-}
-
-function setMultronToCenturia(users) {
-
+function setMultronToCenturia(users) 
+{
+    let companies=0;
+    
+    for(user of users)
+    {
+        if(user.company==="MULTRON")
+        {
+        user.company="CENTURIA";
+        
+        companies++;
+        }
+    }
+    return companies;
+    
 }
 
 console.log(`${setMultronToCenturia(users)} user companies have been changed from MULTRON to CENTURIA.`);
 
+
+///////////////   ETAPE 5    ///////////////////
+
+function excludeCenturiaWorkersBrownEyes(users) 
+{
+    let nbBrownEyesNotCenturia=0;
+    
+    for(user of users)
+    {
+        if(user.company !== "CENTURIA" && user.eyeColor==="brown")
+        {
+            nbBrownEyesNotCenturia++;
+        }
+    }
+    return nbBrownEyesNotCenturia;
+}
+
+console.log(`${excludeCenturiaWorkersBrownEyes(users)} users with brown eyes do not work at CENTURIA`);
+
+
+///////////////   ETAPE 6    ///////////////////
+
+
+function brownEyesActive(users)
+{
+    let brownEyesActiveUser=0;
+    
+    for(user of users)
+    {
+        if(user.eyeColor === "brown" && user.isActive === true)
+        {
+            brownEyesActiveUser++;
+        }
+    }
+    return brownEyesActiveUser;
+}
+
+function brownEyesInactive(users)
+{
+    let brownEyesInactiveUser=0;
+    
+    for(user of users)
+    {
+        if(user.eyeColor === "brown" && user.isActive === false)
+        {
+            brownEyesInactiveUser++;
+        }
+    }
+    return brownEyesInactiveUser;
+}
+
+function blueEyesActive(users)
+{
+    let blueEyesActiveUser=0;
+    
+    for(user of users)
+    {
+        if(user.eyeColor === "blue" && user.isActive === true)
+        {
+            blueEyesActiveUser++;
+        }
+    }
+    return blueEyesActiveUser;
+}
+
+function blueEyesInactive(users)
+{
+    let blueEyesInactiveUser=0;
+    
+    for(user of users)
+    {
+        if(user.eyeColor === "blue" && user.isActive === false)
+        {
+            blueEyesInactiveUser++;
+        }
+    }
+    return blueEyesInactiveUser;
+}
+
+function greenEyesActive(users)
+{
+    let greenEyesActiveUser=0;
+    
+    for(user of users)
+    {
+        if(user.eyeColor === "green" && user.isActive === true)
+        {
+            greenEyesActiveUser++;
+        }
+    }
+    return greenEyesActiveUser;
+}
+
+function greenEyesInactive(users)
+{
+    let greenEyesInactiveUser=0;
+    
+    for(user of users)
+    {
+        if(user.eyeColor === "green" && user.isActive === false)
+        {
+            greenEyesInactiveUser++;
+        }
+    }
+    return greenEyesInactiveUser;
+}
+
+console.log(`Out of our brown eyed users ${brownEyesActive(users)} are active and ${brownEyesInactive(users)} are inactive`);
+console.log(`Out of our blue eyed users ${blueEyesActive(users)} are active and ${blueEyesInactive(users)} are inactive`);
+console.log(`Out of our green eyed users ${greenEyesActive(users)} are active and ${greenEyesInactive(users)} are inactive`);
